@@ -6,10 +6,20 @@ const portNumber = process.env.PORT;
 // creating a new http server
 const server = http.createServer((req, res) => {
 
+    // Lets create a condition to check the rout
+    if (req.url === '/') {
+        res.writeHead (200, {"content-type" : 'text/html'})
+        res.end ("<h1>Hello World</h1>");
+    } else if (req.url === '/user') {
+        res.writeHead (200, {"content-type" : 'text/html'})
+        res.end ("<h1>The user</h1>");
+    }
+
+
     // To set a header to the contents 
     // res.setHeader('Content-Type', 'text/html');
-    console.log(req.url) // the .url here returns the url (path)
-    console.log(req.method)
+    // console.log(req.url) // the .url here returns the url (path)
+    // console.log(req.method)
     // res.write('Hello World!') 
     //res.end('<h1> Hello World! </h1>'); // We can git rid of the res.write() by typing Hello World in res.end()
 
@@ -20,8 +30,6 @@ const server = http.createServer((req, res) => {
 
 
 
-    res.writeHead (200, {"content-type" : 'text/html'})
-    res.end ("<h1>Hello World</h1>");
 })
 
 
